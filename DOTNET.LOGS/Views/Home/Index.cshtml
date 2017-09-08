@@ -1,0 +1,52 @@
+﻿@model DOTNET.LOGS.Models.LogFilter
+@using DOTNET.LOGS.Models.Extensions
+@using FormMethod = System.Web.Mvc.FormMethod
+<script src="~/Scripts/DateTimePicker.js"></script>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@using (Html.BeginForm("Logs", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <fieldset>
+        @Html.ValidationSummary(false)
+        <h2>Filter logs</h2>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Environments:</label>
+            @Html.SmartDropdownListFor(model => model.EnvironmentType, model => model.UserSelectedEnvironment, "Please Select", new { @class = "form-control" })
+            @Html.ValidationMessage("UserSelectedEnvironment")
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Applications:</label>
+            @Html.DropDownList("Application", new List<SelectListItem>
+            {
+                new SelectListItem() { Text = "Please Select", Value = ""},
+                new SelectListItem() { Text = "SelfService", Value = "SelfService"},
+                new SelectListItem() { Text = "Payment Gateway", Value = "PaymentGateway"},
+                new SelectListItem() { Text = "House", Value = "House"},
+                new SelectListItem() { Text = "Car", Value = "Car"},
+                new SelectListItem() { Text = "Car_Mock", Value = "Car_Mock"},
+                new SelectListItem() { Text = "Van", Value = "Van"},
+            new SelectListItem() { Text = "Van_Mock", Value = "Van_Mock"}
+            }, new{ @class="form-control"})
+            @Html.ValidationMessage("Application")
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Start Date time:</label>
+            @Html.TextBoxFor(x=>x.StartDateTime, new { id= "startdatetimepicker", placeholder="Start Date" })
+            @Html.ValidationMessageFor(x=>x.StartDateTime)
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">End Date time:</label>
+            @Html.TextBoxFor(x => x.EndDateTime, new { id = "enddatetimepicker", placeholder ="End Date" })
+            @Html.ValidationMessageFor(x=>x.EndDateTime)
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12 col-xs-6 col-md-6 col-lg-4">
+                    <button class="btn-default btn-primary btn-sm" type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+}

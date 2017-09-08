@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C6E8676C-88B3-47EF-90CA-2A22DF26C6C6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DOTNET.LOGS.DB</RootNamespace>
+    <AssemblyName>DOTNET.LOGS.DB</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit.Core, Version=1.1.8.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqKit.Core.1.1.8.0\lib\net461\LinqKit.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessRules\AlsoExtensionPoint.cs" />
+    <Compile Include="BusinessRules\AndAlsoExtensionPoint.cs" />
+    <Compile Include="BusinessRules\AndExtensionPoint.cs" />
+    <Compile Include="BusinessRules\EndDateTime.cs" />
+    <Compile Include="BusinessRules\ErrorExtensionPoint.cs" />
+    <Compile Include="BusinessRules\Filter.cs" />
+    <Compile Include="BusinessRules\ForExtensionPoint.cs" />
+    <Compile Include="BusinessRules\GreaterThanOrEqual.cs" />
+    <Compile Include="BusinessRules\Interfaces\IAlsoExtensionPoint.cs" />
+    <Compile Include="BusinessRules\Interfaces\IAndAlsoExtensionPoint.cs" />
+    <Compile Include="BusinessRules\Interfaces\IAndExtensionPoint.cs" />
+    <Compile Include="BusinessRules\Interfaces\IEndDateTime.cs" />
+    <Compile Include="BusinessRules\Interfaces\IErrorExtensionPoint.cs" />
+    <Compile Include="BusinessRules\Interfaces\IForExtensionPoint.cs" />
+    <Compile Include="BusinessRules\Interfaces\IGreaterThanOrEqual.cs" />
+    <Compile Include="BusinessRules\Interfaces\ILessThanOrEqual.cs" />
+    <Compile Include="BusinessRules\Interfaces\INotNullExtensionPoint.cs" />
+    <Compile Include="BusinessRules\Interfaces\IStartDateTime.cs" />
+    <Compile Include="BusinessRules\Interfaces\IUrlExtensionPoint.cs" />
+    <Compile Include="BusinessRules\Interfaces\IWithExtensionPoint.cs" />
+    <Compile Include="BusinessRules\LessThanOrEqual.cs" />
+    <Compile Include="BusinessRules\NotNullExtensionPoint.cs" />
+    <Compile Include="BusinessRules\StartDateTime.cs" />
+    <Compile Include="BusinessRules\UrlExtensionPoint.cs" />
+    <Compile Include="BusinessRules\WithExtensionPoint.cs" />
+    <Compile Include="DotNetLogModal.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DotNetLogModal.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetLogModal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DotNetLogModal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetLogModal.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DotNetLogModal.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\LogData.cs" />
+    <Compile Include="Entities\LogQuery.cs" />
+    <Compile Include="ILogInformationProvider.cs" />
+    <Compile Include="LogDetail.cs">
+      <DependentUpon>DotNetLogModal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogDetailPredicates.cs" />
+    <Compile Include="LogInfomrationProvider.Variation1.cs">
+      <DependentUpon>LogInformationProvider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogInfomrationProvider.Variation2.cs">
+      <DependentUpon>LogInformationProvider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogInfomrationProvider.Variation3.cs">
+      <DependentUpon>LogInformationProvider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogInformationProvider.cs" />
+    <Compile Include="LogInformationProvider4.cs">
+      <DependentUpon>LogInformationProvider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogInformationProvider5.cs">
+      <DependentUpon>LogInformationProvider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogInformationProvider6.cs">
+      <DependentUpon>LogInformationProvider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogMain.cs">
+      <DependentUpon>DotNetLogModal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MIAdditionalItemLog.cs">
+      <DependentUpon>DotNetLogModal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MILog.cs">
+      <DependentUpon>DotNetLogModal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>DotNetLogModal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_BGLNetLogErrors.cs">
+      <DependentUpon>DotNetLogModal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Version.cs">
+      <DependentUpon>DotNetLogModal.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="DotNetLogModal.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DotNetLogModal.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DotNetLogModal.edmx.diagram">
+      <DependentUpon>DotNetLogModal.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DotNetLogModal.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DotNetLogModal.edmx</DependentUpon>
+      <LastGenOutput>DotNetLogModal.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DotNetLogModal.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DotNetLogModal.edmx</DependentUpon>
+      <LastGenOutput>DotNetLogModal.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DOTNET.LOGS.Logging\DOTNET.LOGS.Logging.csproj">
+      <Project>{B6E228EF-8E0B-40B1-82D4-9544979759E1}</Project>
+      <Name>DOTNET.LOGS.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DOTNET.LOGS.Shared\DOTNET.LOGS.Shared.csproj">
+      <Project>{d4e97f62-2702-4a30-b3ea-8d713b0ebde8}</Project>
+      <Name>DOTNET.LOGS.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

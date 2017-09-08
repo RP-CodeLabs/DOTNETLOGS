@@ -1,0 +1,29 @@
+﻿@model IEnumerable<DOTNET.LOGS.DB.Entities.LogData>
+@{
+    ViewBag.Title = "Logs";
+}
+
+<table class="table-responsive table-condensed table-bordered">
+    <thead>
+    <tr>
+        <td>Time of exception</td>
+        <td>CustomerSessionId</td>
+        <td>Current page url</td>
+        <td>Url referrer</td>
+        <td>Exception</td>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.StartDateTime</td>
+            <td>@item.CustomerSessionId</td>
+            <td>@item.CurrentUrl</td>
+            <td>@item.UrlReferrrer</td>
+            <td>@item.Exception</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
